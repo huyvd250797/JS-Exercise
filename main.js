@@ -148,7 +148,7 @@ const romanToInt = (roman) => {
 };
 
 //!! CODE khác xử lý nhanh ngắn hơn
-var romanToIntSHORT = function (roman) {
+let romanToIntSHORT = function (roman) {
   // Khai báo đối tượng định nghĩa ký tự roman và int tương ứng
   const romanNumber = {
     I: 1,
@@ -161,8 +161,8 @@ var romanToIntSHORT = function (roman) {
   };
 
   // Khai báo biến kết quả
-  var result = 0;
-  for (var i = 0; i < roman.length; i++) {
+  let result = 0;
+  for (let i = 0; i < roman.length; i++) {
     // Kiểm tra các số ở vị trí thứ 4 và thứ 9
     // ví dụ:IV = 4, IX = 9, CM = 900, XC = 90
     // Nếu giá trị thứ i < giá trị thứ i+1 --> là số vị trí thứ 4 hoặc 9
@@ -187,4 +187,47 @@ const transferRomanToIn = () => {
     romanToIntSHORT(romanNumber);
 };
 
-//TODO ------------------------ 14. Longest Common Prefix: Kiểm tra vần chung ----------------------- */
+//TODO ------------------------ 14. Longest Common Prefix: Kiểm tra cụm từ chung ----------------------- */
+const longestCommonPrefix = () => {
+  let arr = ["flower", "flow", "flight", "flo"];
+
+  // Khai báo biến kết quả
+  let result = "";
+
+  // lấy từ đầu tiên làm độ dài để check
+  let lengthFirstArr = arr[0];
+
+  // Khai báo biến nếu như tìm ra các letter giống nhau
+  let match = true;
+
+  for (let i = 0; i < lengthFirstArr.length; i++) {
+    // Khai báo giá trị chứa giá trị là từng letter trong từ đầu tiên
+    let value = lengthFirstArr[i];
+    console.log(value);
+
+    for (let j = 1; j < arr.length; j++) {
+      // Khai báo biến chứa các từ còn lại (trừ từ đầu tiên)
+      let checkString = arr[j];
+
+      // Nếu từng letter đầu tiên trong từ tiếp theo khác với letter đầu tiên
+      // của từ đầu tiên thì chuyển match = false
+      if (checkString[i] !== value) {
+        match = false;
+        break;
+      }
+    }
+
+    // nếu không khớp từ thì break thoát vòng lặp
+    if (match === false) {
+      break;
+    }
+    // ngươc lại sẽ cộng chuỗi từ giống lại với nhau
+    else {
+      result = result + value;
+    }
+  }
+
+  console.log(result);
+};
+
+longestCommonPrefix();
