@@ -227,7 +227,9 @@ const longestCommonPrefix = () => {
     }
   }
 
-  console.log(result);
+  return result;
 };
 
-longestCommonPrefix();
+//TODO ------------------------ 20. Valid Parentheses ----------------------- */
+// ------------------------ Kiểm tra mở ngoặc đóng ngoặc ----------------------- */
+const isValid = () => {};
