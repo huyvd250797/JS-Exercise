@@ -18,6 +18,20 @@ const isPrime = (num) => {
   return primeNum;
 };
 
+// Remove Duplicate
+function removeDuplicates(arr4) {
+  // Khai báo mảng rỗng
+  var newArr4 = [];
+
+  arr4.forEach((item, index) => {
+    // nếu vị trí đầu tiên của item === vị trí của index chạy tăng dần từ 0
+    if (arr4.indexOf(item) === index) {
+      newArr4.push(item);
+    }
+  });
+  return newArr4;
+}
+
 //TODO ------------------------------- 1. TWO SUM ------------------------------- */
 // Example 1: Input: nums = [2,7,11,15], target = 9
 // Output: [0,1]
@@ -232,4 +246,29 @@ const longestCommonPrefix = () => {
 
 //TODO ------------------------ 20. Valid Parentheses ----------------------- */
 // ------------------------ Kiểm tra mở ngoặc đóng ngoặc ----------------------- */
-const isValid = () => {};
+
+const isValid = (s) => {
+  // Khai báo các cặp ngoặc
+  let BRACKETS = [
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"],
+  ];
+
+  // Khai báo ngoặc mở
+  let OPEN = BRACKETS.reduce((a, [o, c]) => ({ ...a, [o]: c }), {});
+
+  // Khai báo ngoặc đóng
+  let CLOSE = BRACKETS.reduce((a, [o, c]) => ({ ...a, [c]: o }), {});
+
+  // Khai báo mảng rỗng
+  let stack = [];
+
+  for (const c of [...s]) {
+    if (c in OPEN) stack.push(c);
+    if (c in CLOSE && stack.pop() !== CLOSE[c]) return false;
+  }
+
+  return !stack.length;
+};
+console.log(isValid("([)]"));
