@@ -247,7 +247,7 @@ const longestCommonPrefix = () => {
 //TODO ------------------------ 20. Valid Parentheses ----------------------- */
 // ------------------------ Kiểm tra mở ngoặc đóng ngoặc ----------------------- */
 
-const isValid = (s) => {
+const isValid = (string) => {
   // Khai báo các cặp ngoặc
   let BRACKETS = [
     ["(", ")"],
@@ -271,4 +271,37 @@ const isValid = (s) => {
 
   return !stack.length;
 };
-console.log(isValid("([)]"));
+
+//TODO ------------------------ 21. Merge Two Sorted Lists ----------------------- */
+// ------------------------ Ghép mảng và sắp xếp tăng dần ----------------------- */
+
+const mergeTwoSortLists = (list1, list2) => {
+  // concat: ghép mảng
+  let mergeList = list1.concat(list2);
+
+  // khai báo biến swap
+  let temp;
+
+  for (let i = 0; i < mergeList.length; i++) {
+    for (let j = mergeList.length - 1; j > i; j--) {
+      //? Nếu phần tử đầu lớn hơn phần tử sau thì đổi vị trí của nó
+      if (mergeList[i] > mergeList[j]) {
+        // Gán phần tử i vào biến temp
+        temp = mergeList[i];
+
+        // sau đó phần tử i sẽ là giá trị của phần tử j
+        mergeList[i] = mergeList[j];
+
+        // Giá trị phần tử i đã gàn vào biến temp
+        // Gán ngươc lại cho phần tử j
+        mergeList[j] = temp;
+      }
+    }
+  }
+  return mergeList;
+};
+
+let list1 = [1, 2, 4];
+let list2 = [1, 3, 4];
+
+console.log(mergeTwoSortLists(list1, list2));
