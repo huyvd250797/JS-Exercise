@@ -19,17 +19,17 @@ const isPrime = (num) => {
 };
 
 // Remove Duplicate
-function removeDuplicates(arr4) {
+function removeDuplicates(arr) {
   // Khai báo mảng rỗng
-  var newArr4 = [];
+  var newArr = [];
 
-  arr4.forEach((item, index) => {
+  arr.forEach((item, index) => {
     // nếu vị trí đầu tiên của item === vị trí của index chạy tăng dần từ 0
-    if (arr4.indexOf(item) === index) {
-      newArr4.push(item);
+    if (arr.indexOf(item) === index) {
+      newArr.push(item);
     }
   });
-  return newArr4;
+  return newArr;
 }
 
 //TODO ------------------------------- 1. TWO SUM ------------------------------- */
@@ -305,3 +305,34 @@ let list1 = [1, 2, 4];
 let list2 = [1, 3, 4];
 
 console.log(mergeTwoSortLists(list1, list2));
+
+//TODO ----------------- 26. Remove Duplicates from Sorted Array ---------------- */
+
+const removeDuplicateBlankPosition = (arr) => {
+  // Khai bảo mảng kết quả
+  let result = removeDuplicates(arr);
+
+  // Khai báo biến chứa đổ dài mảng kết quả
+  let resultLength = result.length;
+
+  // Khai báo biến chứa số ký tự blank
+  let blanks;
+
+  // ? Nếu độ dài của kết quả < độ dài của mảng ban đầu ==> đã có remove duplicate
+  // và tổng các biến blank sẽ là độ dài mảng ban đầu - độ dài mảng kết quả
+  if (resultLength < arr.length) {
+    blanks = arr.length - resultLength;
+  }
+
+  // push tất cả blank vào mảng kết quả
+  for (let i = 0; i < blanks; i++) {
+    result.push("_");
+  }
+
+  return result;
+};
+
+let list3 = [1, 1, 2];
+let list4 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+
+console.log(removeDuplicateBlankPosition(list4));
