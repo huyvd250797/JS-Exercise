@@ -18,6 +18,20 @@ const isPrime = (num) => {
   return primeNum;
 };
 
+// Remove Duplicate
+function removeDuplicates(arr) {
+  // Khai báo mảng rỗng
+  var newArr = [];
+
+  arr.forEach((item, index) => {
+    // nếu vị trí đầu tiên của item === vị trí của index chạy tăng dần từ 0
+    if (arr.indexOf(item) === index) {
+      newArr.push(item);
+    }
+  });
+  return newArr;
+}
+
 //TODO ------------------------------- 1. TWO SUM ------------------------------- */
 // Example 1: Input: nums = [2,7,11,15], target = 9
 // Output: [0,1]
@@ -235,6 +249,7 @@ document.getElementById(
 ).innerHTML = `➜ Longest Common Prefix: <b>${longestCommonPrefix()}</b>`;
 //TODO ------------------------ 20. Valid Parentheses ----------------------- */
 // ------------------------ Kiểm tra mở ngoặc đóng ngoặc ----------------------- */
+<<<<<<< HEAD
 const isValid = () => {
   // Khai báo các dấu ngoặc cần kiểm tra
   let listParentheses = ["(", "{", "[", ")", "}", "]"];
@@ -330,3 +345,95 @@ const removeNumber = () => {
 
   document.getElementById("resultRemoveItem").innerHTML = `Result: ${arr}`;
 };
+=======
+
+const isValid = (string) => {
+  // Khai báo các cặp ngoặc
+  let BRACKETS = [
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"],
+  ];
+
+  // Khai báo ngoặc mở
+  let OPEN = BRACKETS.reduce((a, [o, c]) => ({ ...a, [o]: c }), {});
+
+  // Khai báo ngoặc đóng
+  let CLOSE = BRACKETS.reduce((a, [o, c]) => ({ ...a, [c]: o }), {});
+
+  // Khai báo mảng rỗng
+  let stack = [];
+
+  for (const c of [...s]) {
+    if (c in OPEN) stack.push(c);
+    if (c in CLOSE && stack.pop() !== CLOSE[c]) return false;
+  }
+
+  return !stack.length;
+};
+
+//TODO ------------------------ 21. Merge Two Sorted Lists ----------------------- */
+// ------------------------ Ghép mảng và sắp xếp tăng dần ----------------------- */
+
+const mergeTwoSortLists = (list1, list2) => {
+  // concat: ghép mảng
+  let mergeList = list1.concat(list2);
+
+  // khai báo biến swap
+  let temp;
+
+  for (let i = 0; i < mergeList.length; i++) {
+    for (let j = mergeList.length - 1; j > i; j--) {
+      //? Nếu phần tử đầu lớn hơn phần tử sau thì đổi vị trí của nó
+      if (mergeList[i] > mergeList[j]) {
+        // Gán phần tử i vào biến temp
+        temp = mergeList[i];
+
+        // sau đó phần tử i sẽ là giá trị của phần tử j
+        mergeList[i] = mergeList[j];
+
+        // Giá trị phần tử i đã gàn vào biến temp
+        // Gán ngươc lại cho phần tử j
+        mergeList[j] = temp;
+      }
+    }
+  }
+  return mergeList;
+};
+
+let list1 = [1, 2, 4];
+let list2 = [1, 3, 4];
+
+console.log(mergeTwoSortLists(list1, list2));
+
+//TODO ----------------- 26. Remove Duplicates from Sorted Array ---------------- */
+
+const removeDuplicateBlankPosition = (arr) => {
+  // Khai bảo mảng kết quả
+  let result = removeDuplicates(arr);
+
+  // Khai báo biến chứa đổ dài mảng kết quả
+  let resultLength = result.length;
+
+  // Khai báo biến chứa số ký tự blank
+  let blanks;
+
+  // ? Nếu độ dài của kết quả < độ dài của mảng ban đầu ==> đã có remove duplicate
+  // và tổng các biến blank sẽ là độ dài mảng ban đầu - độ dài mảng kết quả
+  if (resultLength < arr.length) {
+    blanks = arr.length - resultLength;
+  }
+
+  // push tất cả blank vào mảng kết quả
+  for (let i = 0; i < blanks; i++) {
+    result.push("_");
+  }
+
+  return result;
+};
+
+let list3 = [1, 1, 2];
+let list4 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+
+console.log(removeDuplicateBlankPosition(list4));
+>>>>>>> 8b9e8a4f107e50b7277709287235b8b1ff5d39f4
