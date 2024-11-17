@@ -137,6 +137,8 @@
         Output: "" <br />
         Explanation: There is no common prefix among the input strings. <br />
       </p>
+
+      <p id="longestCommonPrefix"></p>
     </div>
 
     <!-- TODO ------------------------ 20. Valid Parentheses ------------------------- -->
@@ -171,6 +173,48 @@
 
         Output: true <br />
       </p>
+
+      <input
+        type="text"
+        class="form-control"
+        id="parentheses"
+        placeholder="Enter text"
+      />
+      <button type="submit" class="btn btn-primary mb-3">Check</button>
+    </div>
+
+    <!-- TODO -------------------------- 27. Remove Element -------------------------- */ -->
+    <div class="valid-parentheses container container-fluid w-50">
+      <h3>27. Remove Element</h3>
+      <p>
+        Example 1: <br />
+        Input: nums = [3,2,2,3], val = 3 <br />
+        Output: 2, nums = [2,2,_,_]
+      </p>
+
+      <p>
+        Example 2: <br />
+        Input: nums = [0,1,2,2,3,0,4,2], val = 2 <br />
+        Output: 5, nums = [0,1,4,0,3,_,_,_]
+      </p>
+
+      <div class="mb-3">
+        <p>
+          Array:
+          <br />
+          [2, 3, 2, 4, 9, 9, 8, 3, 3, 3, 2, 4, 5, 7, 7, 8, 8, 3]
+        </p>
+        <label for="itemRemoveElement" class="form-label">Search number</label>
+        <input type="number" class="form-control w-50" id="itemRemoveElement" />
+      </div>
+      <button
+        onclick="removeNumber()"
+        type="submit"
+        class="btn btn-danger mb-3"
+      >
+        Delete Number
+      </button>
+      <p id="resultRemoveItem"></p>
     </div>
 
     <script src="./main.js"></script>

@@ -230,6 +230,103 @@ const longestCommonPrefix = () => {
   return result;
 };
 
+document.getElementById(
+  "longestCommonPrefix"
+).innerHTML = `➜ Longest Common Prefix: <b>${longestCommonPrefix()}</b>`;
 //TODO ------------------------ 20. Valid Parentheses ----------------------- */
 // ------------------------ Kiểm tra mở ngoặc đóng ngoặc ----------------------- */
-const isValid = () => {};
+const isValid = () => {
+  // Khai báo các dấu ngoặc cần kiểm tra
+  let listParentheses = ["(", "{", "[", ")", "}", "]"];
+  // let listParenthesesOpen = ["(", "{", "["];
+  // let listParenthesesClose = [")", "}", "]"];
+  let listParentheses01 = ["(", ")"];
+  let listParentheses02 = ["{", "}"];
+  let listParentheses03 = ["[", "]"];
+
+  let string = "(){}(]";
+
+  // Khai báo mảng chứa các dấu ngoặc lấy được trong string
+  let arrayResult = [];
+
+  // Khai báo biến kết quả
+  let result;
+
+  for (let i = 0; i < string.length; i++) {
+    for (let j = 0; j < listParentheses.length; j++) {
+      // Nếu tìm thấy dấu ngoặc trong string, push vào mảng kết quả
+      if (string[i] == listParentheses[j]) arrayResult.push(listParentheses[j]);
+    }
+  }
+
+  // for (let i = 0; i < arrayResult.length; i++) {
+  //   for (let j = 0; j < listParentheses.length; j++) {
+  //     console.log("i =", i, "; j =", j);
+  //     console.log(arrayResult[i]);
+  //     console.log(listParentheses[j]);
+  //     console.log("----------------------------");
+  //     if (arrayResult[i] == listParentheses[j]) {
+  //       result = true;
+  //     } else {
+  //       result = false;
+  //     }
+  //   }
+  // }
+
+  for (let i = 0; i < listParentheses01.length; i++) {
+    for (let j = 0; j < arrayResult.length; j++) {
+      console.log("i =", i, "; j =", j);
+      console.log(" ---------------------------- 1");
+      console.log(listParentheses01[i]);
+      console.log(arrayResult[j]);
+      console.log("---------------------------- 2");
+      console.log(listParentheses02[i]);
+      console.log(arrayResult[j]);
+      console.log("---------------------------- 3");
+      console.log(listParentheses03[i]);
+      console.log(arrayResult[j]);
+      console.log("----------------------------");
+
+      if (listParentheses01[i] == arrayResult[j]) {
+        console.log(true);
+        result = true;
+      } else if (listParentheses02[i] == arrayResult[j]) {
+        console.log(true);
+        result = true;
+      } else if (listParentheses03[i] == arrayResult[j]) {
+        console.log(true);
+        result = true;
+      } else {
+        console.log(false);
+        console.log("----------------------------");
+
+        result = false;
+      }
+    }
+  }
+  console.log(result);
+};
+
+isValid();
+
+//TODO -------------------------- 27. Remove Element -------------------------- */
+
+const removeNumber = () => {
+  let arr = [0, 1, 2, 2, 3, 0, 4, 2];
+
+  // Khai báo biến lấy giá trị input
+  let number = document.getElementById("itemRemoveElement").value;
+
+  for (let i = 0; i < arr.length; i++) {
+    //? Nếu tìm thấy number trong mảng
+    if (arr[i] == parseInt(number)) {
+      // Remove element tại vị trí i
+      arr.splice(i, 1);
+      //! giảm i để kiểm tra vị trí sau khi đã remove còn tồn tại number đang tìm hay không
+      // xử lý vấn đề 2 number giống nhau nằm kề nhau
+      i--;
+    }
+  }
+
+  document.getElementById("resultRemoveItem").innerHTML = `Result: ${arr}`;
+};
