@@ -250,6 +250,9 @@ document.getElementById(
 //TODO ------------------------ 20. Valid Parentheses ----------------------- */
 // ------------------------ Kiểm tra mở ngoặc đóng ngoặc ----------------------- */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6689f30 (27. Remove Element)
 const isValid = () => {
   // Khai báo các dấu ngoặc cần kiểm tra
   let listParentheses = ["(", "{", "[", ")", "}", "]"];
@@ -345,6 +348,7 @@ const removeNumber = () => {
 
   document.getElementById("resultRemoveItem").innerHTML = `Result: ${arr}`;
 };
+<<<<<<< HEAD
 =======
 
 const isValid = (string) => {
@@ -437,3 +441,5 @@ let list4 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
 
 console.log(removeDuplicateBlankPosition(list4));
 >>>>>>> 8b9e8a4f107e50b7277709287235b8b1ff5d39f4
+=======
+>>>>>>> 6689f30 (27. Remove Element)
